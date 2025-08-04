@@ -6,9 +6,9 @@ const nodemailer = require("nodemailer")
 
 const cookieOptions = {
     httpOnly: true,
-    secure: false, // Set to true in production
-    sameSite: 'Lax'
-
+    secure: true,     // Required for HTTPS (Render + Vercel)
+    sameSite: 'None', // Required for cross-site cookies
+    maxAge: 7 * 24 * 60 * 60 * 1000
 };
 
 const transporter = nodemailer.createTransport({
@@ -336,6 +336,11 @@ exports.deleteStaff = async(req,res) =>{
     }
 }
 
-exports.logout = async(req,res) =>{
-    res.clearCookie('token',cookieOptions).json({message:'Logged out Successfully'})
-}
+exports.logout = async (req, res) => {
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None'
+    });
+    res.json({ message: 'Logged out Successfully' });
+};
