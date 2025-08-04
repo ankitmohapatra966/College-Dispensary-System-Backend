@@ -10,7 +10,9 @@ app.use(cookieParser());
 
 app.use(cors({
   credentials:true,
-  origin:"http://localhost:5173"
+  origin:["http://localhost:5173","https://college-dispensary-system-frontend.vercel.app/","https://college-dispensary-system-frontend-ankit-mohapatras-projects.vercel.app/",
+    "https://college-dispensary-system-git-d20df0-ankit-mohapatras-projects.vercel.app/"
+  ]
 }));
 
 require('./connection')
