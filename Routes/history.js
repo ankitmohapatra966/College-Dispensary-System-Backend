@@ -3,8 +3,8 @@ const router = express.Router();
 const Authentication = require('../Authentication/auth');
 const HistoryController = require('../Controllers/history')
 
-router.post('/api/add',Authentication.adminFacultyAuth,HistoryController.addHistory)
-router.get('/api/get-history',Authentication.adminFacultyAuth,HistoryController.getHistoryByDate)
-router.get('/api/get',Authentication.studentAuth,HistoryController.getStudentHistory)
+router.post('/add',Authentication.adminFacultyAuth,HistoryController.addHistory)
+router.get('/get-history',Authentication.adminFacultyAuth,HistoryController.getHistoryByDate)
+router.get('/get',Authentication.studentAuth,HistoryController.getStudentHistory)
 
 module.exports = router;
